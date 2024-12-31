@@ -1,0 +1,36 @@
+UNIT:BEGIN|Ex-Flash Driver Test
+UNIT:0|0.1|spi_flash_chip_id|read chip id is c84018|pass
+UNIT:1|0.38|spi_flash_sector_erase|erase sector 0|-
+UNIT:1|0.47|spi_flash_read|sector 0 is all 0xFF|pass
+UNIT:2|0.64|spi_flash_write|write 4096 bytes 0,1...255,0,1...255... at sector 0|-
+UNIT:2|0.75|spi_flash_read|read 4096 bytes at sector 0 is 0,1...255,0,1...255...|pass
+UNIT:3|0.120|spi_flash_sector_erase|erase sector 4095|-
+UNIT:3|0.129|spi_flash_read|sector 4095 is all 0xFF|pass
+UNIT:4|0.145|spi_flash_write|write 4096 bytes from 0,1...255,0,1...255... at sector 4095|-
+UNIT:4|0.156|spi_flash_read|read 4096 bytes at sector 4095 is 0,1...255,0,1...255...|pass
+UNIT:5|0.202|spi_flash_sector_erase|erase sector 3|-
+UNIT:5|0.211|spi_flash_read|sector 3 is all 0xFF|pass
+UNIT:5|0.252|spi_flash_sector_erase|erase sector 4|-
+UNIT:5|0.262|spi_flash_read|sector 4 is all 0xFF|pass
+UNIT:6|0.266|spi_flash_write|write 500 bytes from 0,1...255,0,1...244 at sector 3|-
+UNIT:6|0.271|spi_flash_read|read 501 bytes at 0x3000 is 0,1...255,0,1...244|pass
+UNIT:7|0.288|spi_flash_write|write 4000 bytes from 0,1...255,0,1...255...160 at 0x31F4|-
+UNIT:7|0.299|spi_flash_read|read 4096 bytes at sector 3 is 0,1...255,0,1...244,0,1...|pass
+UNIT:7|0.304|spi_flash_read|read 405 bytes at sector 4 is 12,13...|pass
+UNIT:END|Ex-Flash Driver Test
+UNIT:BEGIN|FatFs Driver Test
+INFO:>> Flash has no filesystem yet, formatting... <<
+INFO:>> Flash already formatted. <<
+UNIT:0|0.719|app_fatfs_mount|fatfs can be mounted successfully|pass
+UNIT:1|0.729|f_open|create a new txt file|pass
+UNIT:1|0.785|f_write|write context to txt file|pass
+UNIT:1|0.936|f_close|close txt file|pass
+UNIT:2|0.938|f_open|open a exist txt file|pass
+UNIT:2|0.940|f_size|check file size 33|pass
+UNIT:2|0.948|f_read|read context from opened file|pass
+UNIT:2|0.950|f_close|close a opened file|pass
+UNIT:3|0.952|-|check read content is write content|pass
+UNIT:4|0.961|app_fatfs_unmount|fatfs can be unmounted successfully|pass
+UNIT:END|FatFs Driver Test
+INFO:2 tests, 20 assertions, 1 failures
+INFO:Finished in 0.967 seconds

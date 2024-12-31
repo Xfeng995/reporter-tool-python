@@ -1,0 +1,6 @@
+UNIT:BEGIN|RTC Driver Test
+UNIT:0|0.1|HAL_RTC_GetTime & HAL_RTC_GetDate|expect seconds is N|-
+UNIT:1|1.14|HAL_RTC_GetTime & HAL_RTC_GetDate|expect seconds is N+1|pass
+UNIT:END|RTC Driver Test
+INFO:1 tests, 1 assertions, 0 failures
+INFO:Finished in 1.19 seconds
